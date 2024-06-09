@@ -24,3 +24,14 @@ Comprehensive guide to mastering Python fundamentals: From basic syntax to advan
 23.	Inheritance
 24.	Iterators
 25.	Polymorphism
+26.	Python Scope
+27.	Python Modules
+28.	Python Dates
+29.	Python Math
+30.	Python JSON
+31.	Python RegEx
+32.	Python PIP
+33.	Python Try...Except
+34.	Python User Input
+35.	Python String Formatting
+
