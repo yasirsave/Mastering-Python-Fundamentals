@@ -2505,3 +2505,669 @@ for x in (car1, boat1, plane1):
   print(x.brand)
   print(x.model)
   x.move()
+#A variable is only available from inside the region it is created. This is called scope.
+#A variable created inside a function is available inside that function:
+
+def myfunc():
+  x = 300
+  print(x)
+
+myfunc()
+#A variable created outside of a function is global and can be used by anyone:
+
+x = 300
+
+def myfunc():
+  print(x)
+
+myfunc()
+
+print(x)
+
+#If you need to create a global variable, but are stuck in the local scope, you can use the global keyword.
+
+#The global keyword makes the variable global.
+#If you use the global keyword, the variable belongs to the global scope:
+
+def myfunc():
+  global x
+  x = 300
+
+myfunc()
+
+print(x)
+#To change the value of a global variable inside a function, refer to the variable by using the global keyword:
+
+x = 300
+
+def myfunc():
+  global x
+  x = 200
+
+myfunc()
+
+print(x)
+#f you use the nonlocal keyword, the variable will belong to the outer function:
+
+def myfunc1():
+  x = "Jane"
+  def myfunc2():
+    nonlocal x
+    x = "hello"
+  myfunc2()
+  return x
+
+print(myfunc1())
+#A file containing a set of functions you want to include in your application.
+
+#To create a module just save the code you want in a file with the file extension .py:
+
+#Save this code in a file named mymodule.py
+
+#import myModule
+
+#myModule.greeting("Jonathan")
+"""Create an alias for mymodule called mx:
+
+import mymodule as mx
+
+a = mx.person1["age"]
+print(a)
+"""
+#There are several built-in modules in Python, which you can import whenever you like.
+
+#Import and use the platform module:
+
+import platform
+
+x = platform.processor()
+print(x)
+#There is a built-in function to list all the function names (or variable names) in a module. The dir() function:
+
+#List all the defined names belonging to the platform module:
+
+import platform
+
+x = dir(platform)
+print(x)
+#You can choose to import only parts from a module, by using the from keyword.
+
+"""The module named mymodule has one function and one dictionary:
+
+def greeting(name):
+  print("Hello, " + name)
+
+person1 = {
+  "name": "John",
+  "age": 36,
+  "country": "Norway"
+}
+from mymodule import person1
+
+print (person1["age"])
+"""
+#A date in Python is not a data type of its own, but we can import a module named datetime to work with dates as date objects.
+
+import datetime
+
+x = datetime.datetime.now()
+print(x)
+"""When we execute the code from the example above the result will be:
+
+2024-06-04 10:08:22.097431
+The date contains year, month, day, hour, minute, second, and microsecond.
+
+The datetime module has many methods to return information about the date object.
+
+Here are a few examples, you will learn more about them later in this chapter:
+
+Example
+Return the year and name of weekday:"""
+import datetime
+
+x = datetime.datetime.now()
+
+print(x.year)
+print(x.strftime("%A"))
+print(x.month)
+"""To create a date, we can use the datetime() class (constructor) of the datetime module.
+
+The datetime() class requires three parameters to create a date: year, month, day.
+
+Example
+Create a date object:"""
+import datetime
+
+x = datetime.datetime(2024, 6, 4)
+
+print(x)
+print(x.year)
+#The datetime object has a method for formatting date objects into readable strings.
+
+#The method is called strftime(), and takes one parameter, format, to specify the format of the returned string:
+#Display the name of the month:
+
+import datetime
+
+x = datetime.datetime(2018, 6, 1)
+
+print(x.strftime("%B"))
+"""
+Python has a set of built-in math functions, including an extensive math module, that allows you to perform mathematical tasks on numbers.
+
+Built-in Math Functions
+The min() and max() functions can be used to find the lowest or highest value in an iterable:
+"""
+x = min(5, 10, 25)
+y = max(5, 10, 25)
+
+print(x)
+print(y)
+#The abs() function returns the absolute (positive) value of the specified number:
+
+
+x = abs(-7.25)
+
+print(x) #returns 7.25
+#The pow(x, y) function returns the value of x to the power of y (xy).
+#Return the value of 4 to the power of 3 (same as 4 * 4 * 4):
+
+x = pow(4, 3)
+
+print(x)
+#Python has also a built-in module called math, which extends the list of mathematical functions.
+
+#To use it, you must import the math module:
+
+#When you have imported the math module, you can start using methods and constants of the module.
+
+#The math.sqrt() method for example, returns the square root of a number:
+import math
+
+x = math.sqrt(64)
+
+print(x) #8
+#import math
+
+x = math.ceil(1.4)
+y = math.floor(1.4)
+
+print(x) # returns 2
+print(y) # returns 1
+#The math.pi constant, returns the value of PI (3.14...):
+
+import math
+
+x = math.pi
+
+print(x)
+#JSON is a syntax for storing and exchanging data.
+#JSON is text, written with JavaScript object notation.
+
+#Python has a built-in package called json, which can be used to work with JSON data.
+
+#Parse JSON - Convert from JSON to Python
+#If you have a JSON string, you can parse it by using the json.loads() method.
+
+#The result will be a Python dictionary.
+
+#Convert from JSON to Python:
+import json
+
+# some JSON:
+x =  '{ "name":"John", "age":30, "city":"New York"}'
+
+# parse x:
+y = json.loads(x)
+
+# the result is a Python dictionary:
+print(y["age"])
+print(y["name"])
+print(y)
+#Convert from Python to JSON
+#If you have a Python object, you can convert it into a JSON string by using the json.dumps() method.
+#Convert from Python to JSON:
+
+import json
+
+# a Python object (dict):
+x = {
+  "name": "John",
+  "age": 30,
+  "city": "New York"
+}
+
+# convert into JSON:
+y = json.dumps(x)
+
+# the result is a JSON string:
+print(y)
+"""
+You can convert Python objects of the following types, into JSON strings:
+
+dict
+list
+tuple
+string
+int
+float
+True
+False
+None
+"""
+#Convert Python objects into JSON strings, and print the values:
+
+import json
+
+print(json.dumps({"name": "John", "age": 30}))
+print(json.dumps(["apple", "bananas"]))
+print(json.dumps(("apple", "bananas")))
+print(json.dumps("hello"))
+print(json.dumps(42))
+print(json.dumps(31.76))
+print(json.dumps(True))
+print(json.dumps(False))
+print(json.dumps(None))
+
+"""When you convert from Python to JSON, Python objects are converted into the JSON (JavaScript) equivalent:
+
+Python	JSON
+dict	Object
+list	Array
+tuple	Array
+str	String
+int	Number
+float	Number
+True	true
+False	false
+None	null
+"""
+#Convert a Python object containing all the legal data types:
+
+import json
+
+x = {
+  "name": "John",
+  "age": 30,
+  "married": True,
+  "divorced": False,
+  "children": ("Ann","Billy"),
+  "pets": None,
+  "cars": [
+    {"model": "BMW 230", "mpg": 27.5},
+    {"model": "Ford Edge", "mpg": 24.1}
+  ]
+}
+
+print(json.dumps(x))
+"""Format the Result
+The example above prints a JSON string, but it is not very easy to read, with no indentations and line breaks.
+
+The json.dumps() method has parameters to make it easier to read the result:
+
+Example
+Use the indent parameter to define the numbers of indents:"""
+print("\n\n")
+print(json.dumps(x, indent=4))
+#You can also define the separators, default value is (", ", ": "), which means using a comma and a space to separate each object, and a colon and a space to separate keys from values:
+#Use the separators parameter to change the default separator:
+
+z=json.dumps(x, indent=4, separators=(". ", " = "))
+print(z)
+#Use the sort_keys parameter to specify if the result should be sorted or not:
+
+z=json.dumps(x, indent=4, sort_keys=True)
+print(z)
+#A RegEx, or Regular Expression, is a sequence of characters that forms a search pattern.
+#RegEx can be used to check if a string contains the specified search pattern.
+
+#RegEx Module
+#Python has a built-in package called re, which can be used to work with Regular Expressions.
+#Search the string to see if it starts with "The" and ends with "Spain":
+
+import re
+
+txt = "The rain in Spain"
+x = re.search("^The.*Spain$", txt)
+print(x)
+#The re module offers a set of functions that allows us to search a string for a match:
+
+"""Function	Description
+findall	Returns a list containing all matches
+search	Returns a Match object if there is a match anywhere in the string
+split	Returns a list where the string has been split at each match
+sub	Replaces one or many matches with a string"""
+#The findall() function returns a list containing all matches
+#Print a list of all matches:
+
+import re
+
+txt = "The rain in Spain"
+x = re.findall("ai", txt)
+print(x)
+##The list contains the matches in the order they are found. If no matches are found, an empty list is returned:
+#Return an empty list if no match was found:
+
+import re
+
+txt = "The rain in Spain"
+x = re.findall("Portugal", txt)
+print(x) #[] 
+#The search() function searches the string for a match, and returns a Match object if there is a match. If there is more than one match, only the first occurrence of the match will be returned:
+#Search for the first white-space character in the string:
+
+import re
+
+txt = "The rain in Spain"
+x = re.search("\s", txt)
+
+print("The first white-space character is located in position:", x.start())
+#The split() function returns a list where the string has been split at each match:
+
+#Split at each white-space character:
+
+import re
+
+txt = "The rain in Spain"
+x = re.split("\s", txt)
+print(x)
+#You can control the number of occurrences by specifying the maxsplit parameter:
+
+#Split the string only at the first occurrence:
+
+import re
+
+txt = "The rain in Spain"
+x = re.split("\s", txt, 1)
+print(x)
+#The sub() function replaces the matches with the text of your choice:
+#Replace every white-space character with the number 9:
+
+import re
+
+txt = "The rain in Spain"
+x = re.sub("\s", "9", txt)
+print(x)
+#You can control the number of replacements by specifying the count parameter:
+
+#Replace the first 2 occurrences:
+
+import re
+
+txt = "The rain in Spain"
+x = re.sub("\s", "9", txt, 2)
+print(x)
+#A Match Object is an object containing information about the search and the result.
+
+#Note: If there is no match, the value None will be returned, instead of the Match Object.
+#import re
+
+txt = "The rain in Spain"
+x = re.search("ai", txt)
+print(x) #this will print an object <re.Match object; span=(5, 7), match='ai'>
+"""The Match object has properties and methods used to retrieve information about the search, and the result:
+
+.span() returns a tuple containing the start-, and end positions of the match.
+.string returns the string passed into the function
+.group() returns the part of the string where there was a match
+Example
+Print the position (start- and end-position) of the first match occurrence.
+
+The regular expression looks for any words that starts with an upper case "S":"""
+import re
+
+txt = "The rain in Spain"
+x = re.search(r"\bS\w+", txt)
+print(x.span())
+#Print the string passed into the function:
+
+import re
+
+txt = "The rain in Spain"
+x = re.search(r"\bS\w+", txt)
+print(x.string)
+#Print the part of the string where there was a match.
+
+#The regular expression looks for any words that starts with an upper case "S":
+
+import re
+
+txt = "The rain in Spain"
+x = re.search(r"\bS\w+", txt)
+print(x.group())
+#Note: If there is no match, the value None will be returned, instead of the Match Object.
+
+
+#Import and use "camelcase":
+
+import camelcase
+
+c = camelcase.CamelCase()
+
+txt = "hello world"
+
+print(c.hump(txt))
+#Use the uninstall command to remove a package: e.g pip uninstall camelcase write on command prompt 
+"""The try block lets you test a block of code for errors.
+
+The except block lets you handle the error.
+
+The else block lets you execute code when there is no error.
+
+The finally block lets you execute code, regardless of the result of the try- and except blocks.
+
+Exception Handling
+When an error occurs, or exception as we call it, Python will normally stop and generate an error message.
+
+These exceptions can be handled using the try statement:"""
+try:
+  print(x3) #becasue x3 variable does not exist, exception will occur
+except:
+  print("An exception occurred")
+#Many Exceptions
+#You can define as many exception blocks as you want, e.g. if you want to execute a special block of code for a special kind of error:
+#Print one message if the try block raises a NameError and another for other errors:
+
+try:
+  print(x3)
+except NameError:
+  print("Variable x is not defined")
+except:
+  print("Something else went wrong")
+
+#You can use the else keyword to define a block of code to be executed if no errors were raised:
+
+#In this example, the try block does not generate any error:
+
+try:
+  print("Hello")
+except:
+  print("Something went wrong")
+else:
+  print("Nothing went wrong")
+#The finally block, if specified, will be executed regardless if the try block raises an error or not.
+
+#Example
+try:
+  print(x3)
+except:
+  print("Something went wrong")
+finally:
+  print("The 'try except' is finished")
+#This can be useful to close objects and clean up resources:
+
+#Try to open and write to a file that is not writable:
+
+try:
+  f = open("demofile.txt")
+  try:
+    f.write("Lorum Ipsum")
+  except:
+    print("Something went wrong when writing to the file")
+  finally:
+    f.close()
+except:
+  print("Something went wrong when opening the file")
+#The program can continue, without leaving the file object open.
+
+"""
+Raise an exception
+As a Python developer you can choose to throw an exception if a condition occurs.
+
+To throw (or raise) an exception, use the raise keyword.
+
+Example
+Raise an error and stop the program if x is lower than 0:
+
+
+"""
+#x = -1
+
+#if x < 0:
+#  raise Exception("Sorry, no numbers below zero")
+#The raise keyword is used to raise an exception.
+
+#You can define what kind of error to raise, and the text to print to the user.
+
+#Example
+#Raise a TypeError if x is not an integer:
+x = "hello"
+
+#if not type(x) is int:
+ # raise TypeError("Only integers are allowed")
+"""
+User Input
+Python allows for user input.
+
+That means we are able to ask the user for input.
+
+The method is a bit different in Python 3.6 than Python 2.7.
+
+Python 3.6 uses the input() method.
+
+Python 2.7 uses the raw_input() method.
+
+The following example asks for the username, and when you entered the username, it gets printed on the screen:"""
+#username = input("Enter username:")
+#print("Username is: " + username)
+#F-string allows you to format selected parts of a string.
+
+#To specify a string as an f-string, simply put an f in front of the string literal, like this:
+txt = f"The price is 49 dollars"
+print(txt)
+#To format values in an f-string, add placeholders {}, a placeholder can contain variables, operations, functions, and modifiers to format the value.
+#Add a placeholder for the price variable:
+
+price = 59
+txt = f"The price is {price} dollars"
+print(txt)
+#A placeholder can also include a modifier to format the value.
+
+#A modifier is included by adding a colon : followed by a legal formatting type, like .2f which means fixed point number with 2 decimals:
+#Display the price with 2 decimals:
+
+price = 59
+txt = f"The price is {price:.2f} dollars"
+print(txt)
+#You can also format a value directly without keeping it in a variable:
+#Display the value 95 with 2 decimals:
+
+txt = f"The price is {95:.2f} dollars"
+txt2 = f"The price is {99:.4f} dollars"
+print(txt)
+print(txt2)
+#You can perform Python operations inside the placeholders.
+
+#You can do math operations:
+#Perform a math operation in the placeholder, and return the result:
+
+txt = f"The price is {20 * 59} dollars"
+print(txt)
+#You can perform math operations on variables:
+
+
+#Add taxes before displaying the price:
+
+price = 59
+tax = 0.25
+txt = f"The price is {price + (price * tax)} dollars"
+print(txt)
+#You can perform if...else statements inside the placeholders:
+
+#Return "Expensive" if the price is over 50, otherwise return "Cheap":
+
+price = 49
+txt = f"It is very {'Expensive' if price>50 else 'Cheap'}"
+
+print(txt)
+#Use the string method upper()to convert a value into upper case letters:
+
+fruit = "apples"
+txt = f"I love {fruit.upper()}"
+txt2 = f"I love {fruit.lower()}"
+
+print(txt)
+print(txt2)
+#The function does not have to be a built-in Python method, you can create your own functions and use them:
+#Create a function that converts feet into meters:
+
+def myconverter(x):
+  return x * 0.3048
+
+txt = f"The plane is flying at a {myconverter(30000)} meter altitude"
+print(txt)
+#At the beginning of this chapter we explained how to use the .2f modifier to format a number into a fixed point number with 2 decimals.
+
+#There are several other modifiers that can be used to format values:
+
+
+#Use a comma as a thousand separator:
+
+price = 59000
+txt = f"The price is {price:,} dollars" #The price is 59,000 dollars
+print(txt)
+"""
+Before Python 3.6 we used the format() method to format strings.
+
+The format() method can still be used, but f-strings are faster and the preferred way to format strings.
+
+The next examples in this page demonstrates how to format strings with the format() method.
+
+The format() method also uses curly brackets as placeholders {}, but the syntax is slightly different:
+
+Example
+Add a placeholder where you want to display the price:
+
+"""
+price = 49
+txt = "The price is {} dollars"
+print(txt.format(price))
+#OR using f.... which is way faster...
+print(f"The price is {price} dollars")
+#You can add parameters inside the curly brackets to specify how to convert the value:
+#Format the price to be displayed as a number with two decimals:
+price = 49
+txt = "The price is {:.2f} dollars"
+print(txt.format(price))
+#If you want to use more values, just add more values to the format() method:
+
+quantity = 3
+itemno = 567
+price = 49
+myorder = "I want {} pieces of item number {} for {:.2f} dollars."
+print(myorder.format(quantity, itemno, price))
+#You can use index numbers (a number inside the curly brackets {0}) to be sure the values are placed in the correct placeholders:
+quantity = 3
+itemno = 567
+price = 49
+myorder = "I want {0} pieces of item number {1} for {2:.2f} dollars."
+print(myorder.format(quantity, itemno, price))
+#Also, if you want to refer to the same value more than once, use the index number:
+
+age = 36
+name = "John"
+txt = "His name is {1}. {1} is {0} years old."
+print(txt.format(age, name))
+#You can also use named indexes by entering a name inside the curly brackets {carname}, but then you must use names when you pass the parameter values txt.format(carname = "Ford"):
+myorder = "I have a {carname}, it is a {model}."
+print(myorder.format(carname = "Ford", model = "Mustang"))
